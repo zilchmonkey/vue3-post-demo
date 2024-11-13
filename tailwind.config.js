@@ -16,21 +16,23 @@ export default {
             background: "transparent",
             "&:hover, &:after": {
               "animation-play-state": "running",
-              background:
-                "var(--main-bg) padding-box, var(--gradient-border) border-box",
             },
-            "&:after": {
-              animation: "bg-spin 3s linear infinite",
-              content: '"hello"',
+            "&:hover": {
               background:
-                "var(--gta-color) padding-box, var(--gradient-border) border-box",
+                "conic-gradient(from var(--border-angle), transparent 25%, var(--gta-color)) border-box",
+            },
+            "&:hover:after": {
+              content: '""',
+              background:
+                "conic-gradient(from var(--border-angle), transparent 25%, var(--gta-color)) border-box",
               display: "inline-block",
               position: "absolute",
               width: "100%",
               height: "100%",
-              top: "-2px",
-              right: "-2px",
-              // filter: "blur(50px)",
+              top: "0",
+              right: "0",
+              filter: "blur(20px)",
+              "z-index": -1,
             },
           },
         },

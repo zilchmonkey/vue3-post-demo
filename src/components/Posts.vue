@@ -6,37 +6,39 @@
       <a target="_blank" :href="`https://www.rockstargames.com${post.url}`">
         <article>
           <figure class="group" :class="[$style.figureItem]">
-            <div
-              v-if="post.primary_tags[0].id === 736"
-              :style="backgroundStyle"
-              :class="$style.iconContainer"
-              class="group-hover:translate-x-0"
-            >
-              <img :class="$style.icon" :src="rdo" />
+            <div :class="$style.contentHolder">
+              <div
+                v-if="post.primary_tags[0].id === 736"
+                :style="backgroundStyle"
+                :class="$style.iconContainer"
+                class="group-hover:translate-x-0"
+              >
+                <img :class="$style.icon" :src="rdo" />
+              </div>
+              <div
+                v-else-if="post.primary_tags[0].id === 702"
+                :class="$style.iconContainer"
+                class="group-hover:translate-x-0"
+              >
+                GTAV
+              </div>
+              <div
+                v-else
+                :class="$style.iconContainer"
+                class="group-hover:translate-x-0"
+              >
+                R*
+              </div>
+              <img
+                :class="$style.postImg"
+                loading="lazy"
+                :src="post.preview_images_parsed.newswire_block.square"
+              />
+              <figcaption :class="[backgroundColor(post.primary_tags[0].id)]">
+                {{ post.created_formatted }}
+                <p>{{ post.title }}</p>
+              </figcaption>
             </div>
-            <div
-              v-else-if="post.primary_tags[0].id === 702"
-              :class="$style.iconContainer"
-              class="group-hover:translate-x-0"
-            >
-              GTAV
-            </div>
-            <div
-              v-else
-              :class="$style.iconContainer"
-              class="group-hover:translate-x-0"
-            >
-              R*
-            </div>
-            <img
-              :class="$style.postImg"
-              loading="lazy"
-              :src="post.preview_images_parsed.newswire_block.square"
-            />
-            <figcaption :class="[backgroundColor(post.primary_tags[0].id)]">
-              {{ post.created_formatted }}
-              <p>{{ post.title }}</p>
-            </figcaption>
           </figure>
         </article>
       </a>
@@ -150,7 +152,7 @@ article {
     }
   }
 
-  @apply customContainer relative overflow-hidden rounded text-white h-full hover:translate-y-[-1rem] hover:shadow-lg hover:shadow-black transition-transform duration-500 ease-out;
+  @apply customContainer relative rounded text-white h-full hover:translate-y-[-1rem] hover:shadow-lg hover:shadow-black transition-transform duration-500 ease-out;
 
   figcaption {
     @apply text-xl text-start flex flex-col items-center p-4 h-full;
@@ -160,6 +162,10 @@ article {
   }
   .iconContainer {
     @apply inline-block p-2 bg-cover absolute top-0 right-0 transform translate-x-full transition-transform duration-500 ease-out;
+  }
+
+  .contentHolder {
+    @apply overflow-hidden h-full rounded relative;
   }
 }
 .icon {

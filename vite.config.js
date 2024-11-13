@@ -23,7 +23,7 @@ export default defineConfig(({ env }) => {
         generateScopedName:
           env === "production"
             ? "[hash:base64]"
-            : "[name]__[local]__[hash:base64:50]",
+            : "[name]__[local]__[hash:base64]",
       },
     },
   };
