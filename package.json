@@ -1,0 +1,35 @@
+{
+  "name": "vue3-radix-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.11.8",
+    "@vue/apollo-composable": "^4.2.1",
+    "@vue/apollo-option": "^4.2.0",
+    "axios": "^1.7.7",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
+    "js-sha256": "^0.11.0",
+    "radix-vue": "^1.9.8",
+    "vite-svg-loader": "^5.1.0",
+    "vue": "^3.5.12"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "sass-embedded": "^1.80.6",
+    "tailwindcss": "^3.4.14",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.6.3",
+    "vite": "^5.4.10",
+    "vue-tsc": "^2.1.10"
+  }
+}
