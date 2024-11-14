@@ -10,8 +10,8 @@ export default {
       addUtilities(
         {
           ".customContainer": {
-            border: "transparent solid 2px",
-            animation: "bg-spin 3s linear infinite",
+            border: "transparent solid 4px",
+            animation: "bg-spin 2s linear infinite",
             "animation-play-state": "paused",
             background: "transparent",
             "&:hover, &:after": {
@@ -19,19 +19,19 @@ export default {
             },
             "&:hover": {
               background:
-                "conic-gradient(from var(--border-angle), transparent 25%, var(--gta-color)) border-box",
+                "conic-gradient(from var(--border-angle), transparent 25%, var(--bg-color)) border-box",
             },
             "&:hover:after": {
               content: '""',
               background:
-                "conic-gradient(from var(--border-angle), transparent 25%, var(--gta-color)) border-box",
+                "conic-gradient(from var(--border-angle), transparent 25%, var(--bg-color)) border-box",
               display: "inline-block",
               position: "absolute",
               width: "100%",
               height: "100%",
               top: "0",
               right: "0",
-              filter: "blur(20px)",
+              filter: "blur(30px)",
               "z-index": -1,
             },
           },

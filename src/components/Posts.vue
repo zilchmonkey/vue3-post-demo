@@ -5,7 +5,11 @@
     <li v-for="post in posts" :key="post.id">
       <a target="_blank" :href="`https://www.rockstargames.com${post.url}`">
         <article>
-          <figure class="group" :class="[$style.figureItem]">
+          <figure
+            :style="backgroundColor(post.primary_tags[0].id)"
+            class="group"
+            :class="[$style.figureItem]"
+          >
             <div :class="$style.contentHolder">
               <div
                 v-if="post.primary_tags[0].id === 736"
@@ -47,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from "vue";
+import { defineComponent, computed, ref, CSSProperties } from "vue";
 import NEWSWIRE_LIST_QUERY from "@/queries/newswire";
 import { useQuery } from "@vue/apollo-composable";
 import rdo from "@/components/img/rdo.svg";
@@ -100,14 +104,14 @@ export default defineComponent({
 
     const posts = computed(() => result.value?.posts?.results || []);
 
-    const backgroundColor = ref((tag: number): string => {
+    const backgroundColor = ref((tag: number): CSSProperties => {
       switch (tag) {
         case 736:
-          return "bg-[var(--rdr-color)]";
+          return { "--bg-color": "var(--rdr-color)" } as CSSProperties;
         case 702:
-          return "bg-[var(--gta-color)]";
+          return { "--bg-color": "var(--gta-color)" } as CSSProperties;
         default:
-          return "bg-[var(--rock-color)]";
+          return { "--bg-color": "var(--rock-color)" } as CSSProperties;
       }
     });
 
@@ -131,20 +135,7 @@ article {
   }
 }
 .figureItem {
-  --border-angle: 0turn; // For animation.
-  --main-bg: conic-gradient(
-    from var(--border-angle),
-    #213,
-    #112 5%,
-    #112 60%,
-    #213 95%
-  );
-  --gradient-border: conic-gradient(
-    from var(--border-angle),
-    transparent,
-    var(--gta-color) 99%,
-    transparent
-  );
+  --border-angle: 0turn;
 
   @keyframes bg-spin {
     to {
@@ -155,7 +146,7 @@ article {
   @apply customContainer relative rounded text-white h-full hover:translate-y-[-1rem] hover:shadow-lg hover:shadow-black transition-transform duration-500 ease-out;
 
   figcaption {
-    @apply text-xl text-start flex flex-col items-center p-4 h-full;
+    @apply text-xl text-start flex flex-col items-center p-4 h-full bg-[--bg-color];
   }
   &:hover {
     @apply bg-transparent;
