@@ -2,8 +2,12 @@
   <div v-if="loading">Loading...</div>
   <div v-else-if="error">An error occurred: {{ error.message }}</div>
   <ul :class="$style.posts" v-else>
-    <li v-for="post in posts" :key="post.id">
-      <a target="_blank" :href="`https://www.rockstargames.com${post.url}`">
+    <li v-for="(post, index) in posts" :key="post.id">
+      <a
+        @click.prevent="assignId(index)"
+        target="_blank"
+        :href="`https://www.rockstargames.com${post.url}`"
+      >
         <article>
           <figure
             :style="backgroundColor(post.primary_tags[0].id)"
@@ -48,12 +52,18 @@
       </a>
     </li>
   </ul>
+  <Alert
+    v-if="selectedPost"
+    :post="selectedPost"
+    @clear-post-index="clearPostIndex"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, ref, CSSProperties } from "vue";
 import NEWSWIRE_LIST_QUERY from "@/queries/newswire";
 import { useQuery } from "@vue/apollo-composable";
+import Alert from "@/components/alert/index.vue";
 import rdo from "@/components/img/rdo.svg";
 import rdoBack from "@/components/img/rdo-back.png";
 
@@ -96,6 +106,9 @@ const queryVariables = {
 };
 
 export default defineComponent({
+  components: {
+    Alert,
+  },
   setup() {
     const { result, loading, error } = useQuery<QueryResult>(
       NEWSWIRE_LIST_QUERY,
@@ -119,7 +132,39 @@ export default defineComponent({
       backgroundImage: `url(${rdoBack})`,
     });
 
-    return { loading, error, posts, backgroundColor, backgroundStyle, rdo };
+    const postIndex = ref<number | null>(null);
+
+    const assignId = (index: number) => {
+      postIndex.value = index;
+    };
+
+    const selectedPost = computed(() => {
+      if (
+        postIndex.value !== null &&
+        postIndex.value >= 0 &&
+        postIndex.value < posts.value.length
+      ) {
+        return posts.value[postIndex.value] || null;
+      }
+      return null;
+    });
+
+    const clearPostIndex = () => {
+      postIndex.value = null;
+    };
+
+    return {
+      loading,
+      error,
+      posts,
+      backgroundColor,
+      backgroundStyle,
+      postIndex,
+      assignId,
+      selectedPost,
+      clearPostIndex,
+      rdo,
+    };
   },
 });
 </script>
