@@ -75,6 +75,7 @@ import rdoBack from "@/components/img/rdo-back.png";
 interface PreviewImagesParsed {
   newswire_block: {
     square: string;
+    d16x9: string;
   };
 }
 

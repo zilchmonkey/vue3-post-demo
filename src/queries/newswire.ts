@@ -1,8 +1,8 @@
-import { gql } from "graphql-tag"
+import { gql } from "graphql-tag";
 
 const NEWSWIRE_LIST_QUERY = gql`
   query Posts($locale: String!, $limit: Int!) {
-    posts( locale: $locale, limit: $limit) {
+    posts(locale: $locale, limit: $limit) {
       paging {
         perPage
       }
@@ -17,10 +17,11 @@ const NEWSWIRE_LIST_QUERY = gql`
         preview_images_parsed {
           newswire_block {
             square
+            d16x9
           }
         }
       }
     }
   }
-`
-export default NEWSWIRE_LIST_QUERY
+`;
+export default NEWSWIRE_LIST_QUERY;

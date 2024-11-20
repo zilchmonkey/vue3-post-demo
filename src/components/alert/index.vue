@@ -4,7 +4,11 @@
       <AlertDialogOverlay :class="$style.overlay" />
       <AlertDialogContent :class="$style.content">
         <AlertDialogTitle :class="$style.title">
-          <img :src="props.post.preview_images_parsed.newswire_block?.square" />
+          <img
+            :class="isLoaded ? $style.loaded : null"
+            @load="handleImageLoad"
+            :src="props.post.preview_images_parsed.newswire_block?.d16x9"
+          />
         </AlertDialogTitle>
         <AlertDialogDescription :class="$style.description">
           You are about to leave our site and go to an external website. We do
@@ -39,6 +43,7 @@ import {
 
 const emit = defineEmits(["clearPostIndex"]);
 const isOpen = ref(false);
+const isLoaded = ref(false);
 
 const handleAction = () => {
   window.open(`https://www.rockstargames.com${props.post.url}`, "_blank");
@@ -49,11 +54,15 @@ const handleCancel = () => {
   emit("clearPostIndex");
 };
 
+const handleImageLoad = (): void => {
+  isLoaded.value = true;
+};
+
 const props = defineProps<{
   post: {
     title: string;
     url: string;
-    preview_images_parsed: { newswire_block?: { square?: string } };
+    preview_images_parsed: { newswire_block?: { d16x9?: string } };
   };
 }>();
 
@@ -68,7 +77,7 @@ watch(
 );
 </script>
 
-<style module>
+<style scoped module>
 .overlay {
   @apply bg-blackA9 
     data-[state=open]:animate-overlayShow 
@@ -139,5 +148,11 @@ watch(
     leading-none 
     outline-none 
     focus:shadow-[0_0_0_2px];
+}
+img {
+  @apply aspect-video overflow-hidden opacity-0 transition-opacity duration-500;
+  &.loaded {
+    @apply opacity-100;
+  }
 }
 </style>
