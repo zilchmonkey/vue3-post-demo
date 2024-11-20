@@ -9,7 +9,6 @@
   --gta-color: rgba(56, 122, 38, 1);
   --bg-color: var(--rock-color);
   font-family: 'Poppins', sans-serif;
-  font-weight: 700;
   line-height: 1.5;
 
   color-scheme: light dark;
@@ -43,6 +42,10 @@ h1 {
   line-height: 1.1;
 }
 
+h2 {
+  font-weight: 700;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -70,7 +73,6 @@ button:focus-visible {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
   width:100vw;
 }
 

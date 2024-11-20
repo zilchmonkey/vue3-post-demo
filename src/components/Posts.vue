@@ -42,10 +42,15 @@
                 loading="lazy"
                 :src="post.preview_images_parsed.newswire_block.square"
               />
-              <figcaption :class="[backgroundColor(post.primary_tags[0].id)]">
+              <div
+                :class="[
+                  backgroundColor(post.primary_tags[0].id),
+                  $style.caption,
+                ]"
+              >
                 {{ post.created_formatted }}
                 <p>{{ post.title }}</p>
-              </figcaption>
+              </div>
             </div>
           </figure>
         </article>
@@ -174,9 +179,16 @@ article {
   @apply h-full;
 }
 .posts {
-  @apply grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+  @apply grid 
+    gap-8 
+    sm:grid-cols-2 
+    md:grid-cols-3 
+    lg:grid-cols-4;
   .postImg {
-    @apply w-full object-cover aspect-square flex-shrink-0;
+    @apply w-full 
+      object-cover 
+      aspect-square 
+      flex-shrink-0;
   }
 }
 .figureItem {
@@ -188,24 +200,53 @@ article {
     }
   }
 
-  @apply customContainer relative rounded text-white h-full hover:translate-y-[-1rem] hover:shadow-lg hover:shadow-black transition-transform duration-500 ease-out;
+  @apply customContainer 
+    relative rounded 
+    text-white 
+    h-full 
+    hover:translate-y-[-1rem] 
+    hover:shadow-lg 
+    hover:shadow-black 
+    transition-transform 
+    duration-500 
+    ease-out;
 
-  figcaption {
-    @apply text-xl text-start flex flex-col items-center p-4 h-full bg-[--bg-color];
+  .caption {
+    @apply text-xl 
+      text-start 
+      flex 
+      flex-col 
+      p-4 
+      h-full 
+      bg-[--bg-color];
   }
   &:hover {
     @apply bg-transparent;
   }
   .iconContainer {
-    @apply inline-block p-2 bg-cover absolute top-0 right-0 transform translate-x-full transition-transform duration-500 ease-out;
+    @apply inline-block 
+      p-2 
+      bg-cover 
+      absolute 
+      top-0 
+      right-0 
+      transform 
+      translate-x-full 
+      transition-transform 
+      duration-500 
+      ease-out;
   }
 
   .contentHolder {
-    @apply overflow-hidden h-full rounded relative;
+    @apply overflow-hidden 
+      h-full 
+      rounded 
+      relative;
   }
 }
 .icon {
-  @apply w-32 ml-auto;
+  @apply w-32 
+    ml-auto;
 }
 
 @property --border-angle {
