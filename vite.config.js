@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import { fileURLToPath, URL } from "url";
 import vue from "@vitejs/plugin-vue";
 
-export default defineConfig(({ env }) => {
+export default defineConfig(({ cmd, mode }) => {
   return {
     plugins: [vue()],
     resolve: {
@@ -21,7 +21,7 @@ export default defineConfig(({ env }) => {
       },
       modules: {
         generateScopedName:
-          env === "production"
+          mode === "production"
             ? "[hash:base64]"
             : "[name]__[local]__[hash:base64]",
       },
