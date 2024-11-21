@@ -1,5 +1,33 @@
-# Vue 3 + TypeScript + Vite
+# Vue 3 Post Demo
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This demo showcases the use of Vue 3 with the Composition API. It also highlights the integration of Radix-Vue, Tailwind CSS, TypeScript, and GraphQL.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+This project utilizes [pnpm](https://pnpm.io/), although npm should work seamlessly as well.
+
+## Project setup
+
+### Install dependencies
+
+```
+pnpm install
+```
+
+### Run dev
+
+```
+pnpm run dev
+```
+
+### Compile and minify for production
+
+```
+pnpm run build
+```
+
+### Run production build
+
+```
+pnpm run preview
+```
+
+Due to CORS restrictions the GraphQL query will only work on "http://localhost".
