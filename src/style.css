@@ -7,8 +7,9 @@
   --rock-color: rgba(225, 152, 8, 1);
   --rdr-color: rgba(204, 0, 0, 1);
   --gta-color: rgba(56, 122, 38, 1);
+  --gtavi-color: rgba(255, 176, 196, 1);
   --bg-color: var(--rock-color);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.5;
 
   color-scheme: light dark;
@@ -73,7 +74,7 @@ button:focus-visible {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 2rem;
-  width:100vw;
+  width: 100vw;
 }
 
 @media (prefers-color-scheme: light) {

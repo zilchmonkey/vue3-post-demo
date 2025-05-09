@@ -52,6 +52,8 @@ const backgroundColor = ref((tag: number): CSSProperties => {
       return { "--bg-color": "var(--rdr-color)" } as CSSProperties;
     case 702:
       return { "--bg-color": "var(--gta-color)" } as CSSProperties;
+    case 666:
+      return { "--bg-color": "var(--gtavi-color)" } as CSSProperties;
     default:
       return { "--bg-color": "var(--rock-color)" } as CSSProperties;
   }

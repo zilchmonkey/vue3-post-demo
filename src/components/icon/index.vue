@@ -14,6 +14,13 @@
   >
     <img :class="$style.icon" :src="gtao" />
   </div>
+  <div
+    v-else-if="props.id === 666"
+    :class="$style.iconContainer"
+    class="group-hover:translate-x-0"
+  >
+    <img :class="$style.icon" :src="gtavi" />
+  </div>
   <div v-else :class="$style.iconContainer" class="group-hover:translate-x-0">
     <img :class="$style.icon" :src="rStar" />
   </div>
@@ -24,6 +31,7 @@ import rdo from "@/components/icon/img/rdo.svg";
 import rdoBack from "@/components/icon/img/rdo-back.png";
 import gtao from "@/components/icon/img/gta-o.svg";
 import rStar from "@/components/icon/img/rockstar-game-logo.png";
+import gtavi from "@/components/icon/img/vi.png";
 
 const props = defineProps<{ id: number }>();
 
